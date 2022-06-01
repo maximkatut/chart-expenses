@@ -77,15 +77,17 @@ label {
   -o-border-radius: 4px;
 
   &::before {
-    content: attr(before);
+    content: attr(data-before);
     position: absolute;
     bottom: -28px;
-    left: 14px;
+    left: 0;
     font-size: 15px;
+    width: 50px;
+    text-align: center;
 
     @media #{$media} {
       bottom: -26px;
-      left: 6px;
+      width: 32px;
       font-size: 12px;
     }
   }
@@ -94,7 +96,7 @@ label {
     display: flex;
     justify-content: center;
     align-items: center;
-    content: attr(after);
+    content: attr(data-after);
     position: absolute;
     text-align: center;
     top: -48px;
