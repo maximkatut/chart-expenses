@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $main-bg-color;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 18px;
+}
