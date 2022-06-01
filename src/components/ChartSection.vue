@@ -1,36 +1,52 @@
-<script></script>
+<script setup lang="ts">
+import { ref, watchEffect } from 'vue';
+import TotalSection from './TotalSection.vue';
+
+type Day = {
+  amount: number;
+  day: string;
+};
+
+const MAX_HEIGHT_OF_CHART = 150;
+const WEEK_DAYS = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const dayNumber = ref(new Date().getDay());
+const weekDays = ref(null);
+let maxValue = 0;
+let sum = ref(0);
+
+watchEffect(async () => {
+  const data = await (await fetch('data.json')).json();
+  const amounts = data.map((item: Day) => item.amount);
+  weekDays.value = data;
+  maxValue = Math.max(...amounts);
+  sum.value = amounts.reduce((d: number, b: number) => d + b);
+});
+
+const getHeight = (amount: number) => {
+  return (amount / maxValue) * MAX_HEIGHT_OF_CHART;
+};
+</script>
+
 <template>
   <div class="chart">
     <h2 class="chart-title">Spending - Last 7 days</h2>
     <ul class="chart-list">
-      <li class="chart-item">
-        <input id="mon" type="radio" name="weekday" />
-        <label for="mon" data-before="mon" data-after="$34.55"></label>
-      </li>
-      <li class="chart-item">
-        <input id="tue" type="radio" name="weekday" />
-        <label for="tue" data-before="tue"></label>
-      </li>
-      <li class="chart-item">
-        <input id="wed" type="radio" name="weekday" checked />
-        <label for="wed" data-before="wed"></label>
-      </li>
-      <li class="chart-item">
-        <input id="thu" type="radio" name="weekday" />
-        <label for="thu" data-before="thu"> </label>
-      </li>
-      <li class="chart-item">
-        <input id="fri" type="radio" name="weekday" />
-        <label for="fri" data-before="fri"> </label>
-      </li>
-      <li class="chart-item">
-        <input id="sat" type="radio" name="weekday" />
-        <label for="sat" data-before="sat"> </label>
-      </li>
-      <li class="chart-item">
-        <input id="sun" type="radio" name="weekday" />
-        <label for="sun" data-before="sun"> </label>
+      <li
+        v-for="{ day, amount } of weekDays"
+        :key="day"
+        class="chart-item"
+        :style="{ height: getHeight(amount) + 'px' }"
+      >
+        <input
+          :id="day"
+          type="radio"
+          name="weekday"
+          :checked="day === WEEK_DAYS[dayNumber - 1]"
+        />
+        <label :for="day" :data-before="day" :data-after="amount" />
       </li>
     </ul>
   </div>
+  <TotalSection :sum="sum" />
 </template>
