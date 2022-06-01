@@ -13,4 +13,19 @@ body {
   background-color: $main-bg-color;
   font-family: 'DM Sans', sans-serif;
   font-size: 18px;
+
+  @media #{$media} {
+    font-size: 15px;
+  }
+}
+
+.wrapper {
+  width: 540px;
+  margin: 0 auto;
+  margin-top: 182px;
+
+  @media #{$media} {
+    width: 342px;
+    margin-top: 66px;
+  }
 }

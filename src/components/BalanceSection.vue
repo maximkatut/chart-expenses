@@ -1,5 +1,18 @@
 <script setup lang="ts"></script>
 
-<template></template>
-
-<style lang="scss"></style>
+<template>
+  <div class="balance">
+    <div class="balance-wrapper">
+      <h2 class="balance-title">My balance</h2>
+      <p class="balance-sum">$921.48</p>
+    </div>
+    <div class="balance-logo">
+      <svg viewBox="0 0 72 48" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd">
+          <circle fill="#382314" cx="48" cy="24" r="24" />
+          <circle stroke="#FFF" stroke-width="2" cx="24" cy="24" r="23" />
+        </g>
+      </svg>
+    </div>
+  </div>
+</template>
