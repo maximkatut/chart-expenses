@@ -38,13 +38,13 @@ const getHeight = (amount: number) => {
         class="chart-item"
         :style="{ height: getHeight(amount) + 'px' }"
       >
-        <input
-          :id="day"
-          type="radio"
-          name="weekday"
-          :checked="day === WEEK_DAYS[dayNumber - 1]"
+        <input :id="day" type="radio" name="weekday" />
+        <label
+          :for="day"
+          :data-before="day"
+          :data-after="amount"
+          :class="day === WEEK_DAYS[dayNumber - 1] ? 'active' : ''"
         />
-        <label :for="day" :data-before="day" :data-after="amount" />
       </li>
     </ul>
   </div>

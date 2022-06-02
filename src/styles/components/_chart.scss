@@ -76,6 +76,14 @@ label {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 
+  &.active {
+    background-color: $bg-day-active;
+
+    &:hover {
+      background-color: $bg-day-active-light;
+    }
+  }
+
   &::before {
     content: attr(data-before);
     position: absolute;
@@ -90,6 +98,10 @@ label {
       width: 32px;
       font-size: 12px;
     }
+  }
+
+  &:hover {
+    background-color: $bg-day-light;
   }
 
   &:hover::after {
@@ -116,8 +128,4 @@ label {
       font-size: 12px;
     }
   }
-}
-
-input[type='radio']:checked + label {
-  background-color: $bg-day-active;
 }
