@@ -4,10 +4,12 @@ import ChartSection from './components/ChartSection.vue';
 </script>
 
 <template>
-  <div class="wrapper">
-    <BalanceSection />
-    <ChartSection />
-  </div>
+  <main>
+    <div class="wrapper">
+      <BalanceSection />
+      <ChartSection />
+    </div>
+  </main>
 </template>
 
 <style lang="scss">
