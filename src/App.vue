@@ -5,6 +5,7 @@ import ChartSection from './components/ChartSection.vue';
 
 <template>
   <main>
+    <h1 class="visually-hidden">Chart component</h1>
     <div class="wrapper">
       <BalanceSection />
       <ChartSection />
